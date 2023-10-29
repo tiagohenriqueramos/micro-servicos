@@ -22,7 +22,7 @@ public class TrabalhadorResource {
 	private static Logger logger = LoggerFactory.getLogger(TrabalhadorResource.class);
 	@Autowired
 	private Environment env;
-	
+
 	@Autowired
 	private TrabalhadorRepository repository;
 
@@ -31,11 +31,12 @@ public class TrabalhadorResource {
 		List<Trabalhador> list = repository.findAll();
 		return ResponseEntity.ok(list);
 	}
+
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Trabalhador> findById(@PathVariable Long id) {
-		
+
 		logger.info("PORT = " + env.getProperty("local.server.port"));
-		
+
 		Trabalhador obj = repository.findById(id).get();
 		return ResponseEntity.ok(obj);
 	}
